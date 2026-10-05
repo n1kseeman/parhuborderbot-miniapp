@@ -25,7 +25,8 @@
       return;
     }
     if (activeView() !== 'shop' && typeof window.setView === 'function') {
-      window.setView('shop');
+      const profileChildren = ['orders', 'help', 'admin'];
+      window.setView(profileChildren.includes(activeView()) ? 'profile' : 'shop');
     }
   }
 
@@ -56,6 +57,7 @@
     if (!webApp) return;
     webApp.ready();
     webApp.expand();
+    if (webApp.isVersionAtLeast?.('7.7')) webApp.disableVerticalSwipes?.();
     webApp.setHeaderColor('#09070d');
     webApp.setBackgroundColor('#09070d');
     if (webApp.isVersionAtLeast?.('7.10')) webApp.setBottomBarColor('#100d14');

@@ -370,6 +370,37 @@ function openProduct(productId) {
   document.dispatchEvent(new CustomEvent("parhub:modalchange"));
 }
 
+function formatOrderDate(value) {
+  if (!value) return "";
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(value));
+}
+
+function renderOrderHistory() {
+  const orders = state.orders.slice().reverse();
+  $("#orderHistory").innerHTML =
+    orders
+      .map(
+        (order) => `
+        <article class="history-order">
+          <div class="history-order-head">
+            <div><h3>Заказ #${order.id}</h3><time>${formatOrderDate(order.createdAt)}</time></div>
+            <span class="order-status-pill">${order.status}</span>
+          </div>
+          <p>${order.items
+            .map((line) => `${line.name}${line.variantName ? ` · ${line.variantName}` : ""} × ${line.qty}`)
+            .join("<br>")}</p>
+          <div class="history-order-total"><span>Итого</span><b>${money(order.total)}</b></div>
+        </article>`,
+      )
+      .join("") ||
+    '<div class="empty">У вас пока нет заказов.<button class="primary empty-action" data-view="shop">Перейти в каталог</button></div>';
+}
+
 function setView(name) {
   $$(".view").forEach((view) => view.classList.remove("active"));
   $(`#${name}View`)?.classList.add("active");
@@ -377,6 +408,7 @@ function setView(name) {
     button.classList.toggle("active", button.dataset.view === name),
   );
   if (name === "admin") renderAdmin();
+  if (name === "orders") renderOrderHistory();
   window.scrollTo(0, 0);
   document.dispatchEvent(new CustomEvent("parhub:viewchange", { detail: { view: name } }));
 }
@@ -483,6 +515,12 @@ document.addEventListener("click", (event) => {
 
   const editButton = event.target.closest("[data-edit]");
   if (editButton) editProduct(editButton.dataset.edit);
+
+  const faqButton = event.target.closest("[data-faq]");
+  if (faqButton) {
+    faqButton.classList.toggle("open");
+    faqButton.nextElementSibling?.classList.toggle("hidden");
+  }
 });
 
 $("#filterBtn").onclick = () => $("#filterPanel").classList.toggle("open");
@@ -654,6 +692,15 @@ $("#denyAge").onclick = () => {
   document.querySelector(".age-card").innerHTML =
     "<h1>Доступ ограничен</h1><p>Каталог доступен только совершеннолетним пользователям.</p>";
 };
+
+document.addEventListener("gesturestart", (event) => event.preventDefault(), { passive: false });
+document.addEventListener(
+  "touchmove",
+  (event) => {
+    if (event.touches.length > 1) event.preventDefault();
+  },
+  { passive: false },
+);
 
 migrateCart();
 save();

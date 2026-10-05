@@ -15,11 +15,12 @@
   min-height: var(--tg-viewport-stable-height, 100vh);
   padding-left: max(18px, var(--tg-content-safe-area-inset-left, 0px));
   padding-right: max(18px, var(--tg-content-safe-area-inset-right, 0px));
-  padding-top: var(--tg-content-safe-area-inset-top, 0px);
+  padding-top: max(8px, var(--tg-content-safe-area-inset-top, 0px));
 }
 
 .telegram-app .topbar {
-  top: var(--tg-content-safe-area-inset-top, 0px);
+  top: 0;
+  padding-top: 6px;
 }
 
 .telegram-app .bottom-nav {
@@ -68,6 +69,15 @@
   text-rendering: optimizeLegibility;
 }
 
+html,
+body {
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  touch-action: pan-x pan-y;
+  -webkit-text-size-adjust: 100%;
+}
+
 body,
 button,
 input,
@@ -78,6 +88,12 @@ textarea {
 
 body {
   letter-spacing: -0.012em;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
 }
 
 main {
@@ -104,6 +120,167 @@ main {
 
 .brand {
   letter-spacing: 0.025em;
+  font-size: 15px;
+}
+
+.subpage-title {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 8px;
+}
+
+.subpage-title h1 {
+  grid-column: 2;
+  text-align: center;
+  font-size: 28px;
+}
+
+.page-back {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.history-order {
+  margin-bottom: 12px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.05), transparent 50%),
+    var(--panel);
+}
+
+.history-order-head,
+.history-order-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.history-order h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.history-order time,
+.history-order p {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.history-order p {
+  margin: 13px 0;
+  line-height: 1.55;
+}
+
+.history-order-total {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.order-status-pill {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(82, 224, 162, 0.12);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.empty-action {
+  margin-top: 18px;
+}
+
+.support-card {
+  padding: 20px;
+  border: 1px solid rgba(68, 170, 235, 0.2);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(48, 169, 232, 0.19), transparent 48%),
+    var(--panel);
+}
+
+.support-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #32a9e8, #1677d2);
+  box-shadow: 0 12px 28px rgba(22, 139, 210, 0.3);
+  font-size: 24px;
+}
+
+.support-card h2 {
+  margin: 16px 0 6px;
+  font-size: 19px;
+}
+
+.support-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.support-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.faq-list {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.faq-row {
+  width: 100%;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 2px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.faq-row i {
+  color: var(--muted);
+  font-size: 19px;
+  font-style: normal;
+  transition: transform 180ms ease;
+}
+
+.faq-row.open i {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  margin: 0;
+  padding: 12px 2px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .product-card {
