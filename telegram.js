@@ -44,6 +44,8 @@
     name.textContent = fullName || user.username || 'Пользователь Telegram';
     status.textContent = user.username ? `@${user.username}` : 'Вход через Telegram';
     avatar.textContent = (user.first_name || user.username || 'T').slice(0, 1).toUpperCase();
+    const checkoutName = document.querySelector('#checkoutForm [name="name"]');
+    if (checkoutName && !checkoutName.value) checkoutName.value = fullName;
     if (user.photo_url) {
       avatar.style.backgroundImage = `url("${user.photo_url.replaceAll('"', '')}")`;
       avatar.classList.add('has-photo');
