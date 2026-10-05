@@ -356,7 +356,6 @@ function openProduct(productId) {
         .map(
           (variant, index) => `
           <button class="variant-option" data-variant="${index}" data-unavailable="${variant.stock < 1}">
-            <span class="variant-swatch" style="--swatch:${variant.color || item.art}"></span>
             <span>${variant.name}</span>
           </button>`,
         )

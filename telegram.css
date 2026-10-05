@@ -123,6 +123,13 @@ main {
   font-size: 15px;
 }
 
+.topbar,
+.telegram-app .topbar {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 .subpage-title {
   display: grid;
   grid-template-columns: 42px minmax(0, 1fr) 42px;
@@ -456,7 +463,8 @@ main {
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.045);
   color: var(--text);
-  text-align: left;
+  justify-content: center;
+  text-align: center;
   font-size: 12px;
   font-weight: 650;
 }
@@ -471,16 +479,6 @@ main {
 
 .variant-option[data-unavailable="true"] {
   opacity: 0.38;
-}
-
-.variant-swatch {
-  flex: 0 0 auto;
-  width: 17px;
-  height: 17px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  background: var(--swatch);
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.35);
 }
 
 .modal-card {
