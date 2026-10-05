@@ -1,0 +1,56 @@
+.telegram-app body {
+  min-height: var(--tg-viewport-stable-height, 100vh);
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.telegram-app input,
+.telegram-app textarea,
+.telegram-app select {
+  user-select: text;
+}
+
+.telegram-app .app-shell {
+  min-height: var(--tg-viewport-stable-height, 100vh);
+  padding-left: max(18px, var(--tg-content-safe-area-inset-left, 0px));
+  padding-right: max(18px, var(--tg-content-safe-area-inset-right, 0px));
+  padding-top: var(--tg-content-safe-area-inset-top, 0px);
+}
+
+.telegram-app .topbar {
+  top: var(--tg-content-safe-area-inset-top, 0px);
+}
+
+.telegram-app .bottom-nav {
+  padding-bottom: max(9px, var(--tg-content-safe-area-inset-bottom, 0px));
+}
+
+.avatar.has-photo {
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+}
+
+.telegram-auth-card {
+  text-align: center;
+}
+
+.telegram-mark {
+  width: 62px;
+  height: 62px;
+  margin: 5px auto 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #32a9e8, #1677d2);
+  box-shadow: 0 14px 34px #168bd24d;
+  color: white;
+  font-size: 30px;
+}
+
+.telegram-auth-card .muted {
+  max-width: 360px;
+  margin: 0 auto 22px;
+  line-height: 1.55;
+}

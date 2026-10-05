@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0710" />
+  <title>PAR HUB — Telegram Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+  <script src="telegram.js" defer></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="telegram.css" />
+</head>
+<body>
+  <div class="age-gate" id="ageGate">
+    <div class="age-card">
+      <h1>Только для совершеннолетних</h1>
+      <p>Подтвердите, что вам исполнилось 18 лет.</p>
+      <button class="primary" id="confirmAge">Мне есть 18 лет</button>
+      <button class="ghost" id="denyAge">Мне нет 18 лет</button>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" data-view="shop" aria-label="Главная"><span class="logo-mark small">PH</span><span>PAR HUB</span></button>
+      <div class="top-actions">
+        <button class="icon-btn" id="searchToggle" aria-label="Поиск">⌕</button>
+        <button class="icon-btn cart-icon" data-view="cart" aria-label="Корзина">⌁<span id="cartBadge">0</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="shopView">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">НОВАЯ КОЛЛЕКЦИЯ</p>
+            <h1>Твой вкус.<br><span>Твой ритм.</span></h1>
+            <p>Отборные вкусы и устройства с быстрой выдачей.</p>
+            <button class="primary compact" id="showHits">Смотреть хиты →</button>
+          </div>
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="hero-product">PAR<br><b>HUB</b></div>
+        </div>
+
+        <div class="search-panel" id="searchPanel">
+          <input id="searchInput" type="search" placeholder="Найти вкус или бренд" />
+        </div>
+        <div class="section-head"><div><p class="eyebrow">КАТАЛОГ</p><h2>Выбери своё</h2></div><button class="filter-btn" id="filterBtn">Фильтры <span>⌄</span></button></div>
+        <div class="chips" id="categoryChips"></div>
+        <div class="filter-panel" id="filterPanel">
+          <label>Сортировка<select id="sortSelect"><option value="popular">Сначала популярные</option><option value="priceAsc">Цена: по возрастанию</option><option value="priceDesc">Цена: по убыванию</option><option value="new">Сначала новинки</option></select></label>
+          <label>Максимальная цена <b id="priceValue">5 000 ₽</b><input id="priceRange" type="range" min="500" max="5000" step="100" value="5000" /></label>
+          <label class="check"><input id="inStockOnly" type="checkbox" /> Только в наличии</label>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <section class="view" id="favoritesView">
+        <div class="page-title"><p class="eyebrow">СОХРАНЁННОЕ</p><h1>Избранное</h1></div>
+        <div class="product-grid" id="favoritesGrid"></div>
+      </section>
+
+      <section class="view" id="cartView">
+        <div class="page-title"><p class="eyebrow">ВАШ ЗАКАЗ</p><h1>Корзина</h1></div>
+        <div id="cartItems"></div>
+        <div class="cart-summary" id="cartSummary">
+          <div><span>Товары</span><b id="subtotal">0 ₽</b></div><div><span>Скидка</span><b class="accent">−0 ₽</b></div><div class="total"><span>Итого</span><b id="cartTotal">0 ₽</b></div>
+          <button class="primary" id="checkoutBtn">Оформить заказ</button>
+        </div>
+      </section>
+
+      <section class="view" id="profileView">
+        <div class="page-title"><p class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</p><h1>Профиль</h1></div>
+        <div class="profile-card"><div class="avatar" id="profileAvatar">N</div><div><b id="profileName">Гость PAR HUB</b><span id="profileStatus">Режим предпросмотра</span></div></div>
+        <button class="menu-row"><span>◫</span><div><b>Мои заказы</b><small>История и статусы</small></div><i>›</i></button>
+        <button class="menu-row"><span>?</span><div><b>Помощь</b><small>Связаться с магазином</small></div><i>›</i></button>
+      </section>
+
+      <section class="view" id="adminView">
+        <div class="page-title row"><div><p class="eyebrow">УПРАВЛЕНИЕ</p><h1>Админка</h1></div><button class="ghost compact" data-view="profile">Закрыть</button></div>
+        <div class="stats"><div><span>Заказов</span><b id="orderCount">0</b></div><div><span>Товаров</span><b id="productCount">0</b></div><div><span>Выручка</span><b id="revenue">0 ₽</b></div></div>
+        <div class="admin-tabs"><button class="active" data-admin-tab="orders">Заказы</button><button data-admin-tab="products">Товары</button></div>
+        <div id="adminOrders"></div>
+        <div id="adminProducts" class="hidden"><button class="primary compact" id="addProductBtn">+ Добавить товар</button><div id="adminProductList"></div></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="active" data-view="shop"><span>⌂</span>Магазин</button>
+      <button data-view="favorites"><span>♡</span>Избранное</button>
+      <button data-view="cart"><span>⌁</span>Корзина</button>
+      <button data-view="profile"><span>○</span>Профиль</button>
+    </nav>
+  </div>
+
+  <div class="modal" id="productModal"><div class="modal-card" id="productModalBody"></div></div>
+  <div class="modal" id="checkoutModal"><div class="modal-card form-card"><button class="modal-close" data-close="checkoutModal">×</button><p class="eyebrow">ОФОРМЛЕНИЕ</p><h2>Куда подготовить заказ?</h2><form id="checkoutForm"><label>Имя<input name="name" required placeholder="Ваше имя" /></label><label>Телефон<input name="phone" required placeholder="+7 (___) ___-__-__" /></label><label>Получение<select name="delivery"><option>Самовывоз</option><option>Доставка курьером</option></select></label><label>Комментарий<textarea name="comment" placeholder="Пожелания к заказу"></textarea></label><button class="primary" type="submit">Подтвердить заказ</button></form></div></div>
+  <div class="modal" id="telegramAuthModal"><div class="modal-card telegram-auth-card"><button class="modal-close" data-close="telegramAuthModal">×</button><div class="telegram-mark" aria-hidden="true">✦</div><h2>Продолжите в Telegram</h2><p class="muted">Профиль подтверждается автоматически, когда Mini App запущен из бота. Вернитесь в Telegram и откройте приложение кнопкой в профиле бота.</p><button class="primary" data-close="telegramAuthModal">Понятно</button></div></div>
+  <div class="modal" id="editProductModal"><div class="modal-card form-card"><button class="modal-close" data-close="editProductModal">×</button><p class="eyebrow">АССОРТИМЕНТ</p><h2 id="editProductTitle">Новый товар</h2><form id="productForm"><input type="hidden" name="id" /><label>Название<input name="name" required /></label><label>Категория<select name="category"><option>Одноразовые</option><option>Жидкости</option><option>Устройства</option><option>Расходники</option></select></label><label>Вкус<input name="flavor" required /></label><label>Цена, ₽<input name="price" type="number" min="1" required /></label><label>Остаток<input name="stock" type="number" min="0" required /></label><button class="primary" type="submit">Сохранить</button></form></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
