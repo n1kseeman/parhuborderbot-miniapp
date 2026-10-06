@@ -298,6 +298,29 @@ main {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
 }
 
+.product-art::after {
+  content: "VAPE\A SHOP";
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  transform: translate(-50%, -50%) rotate(5deg);
+  white-space: pre;
+  text-align: center;
+  font-size: 8px;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.modal-art::after {
+  content: "VAPE\A SHOP";
+  padding: 0 10px;
+  white-space: pre;
+  text-align: center;
+  font-size: 11px;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
 .product-info h3 {
   font-size: 14px;
   font-weight: 700;

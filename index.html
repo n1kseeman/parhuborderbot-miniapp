@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#0a0710" />
   <title>VAPE SHOP — Telegram Mini App</title>
   <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
-  <script src="telegram.js" defer></script>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="telegram.css" />
+  <script src="telegram.js?v=20261006-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261006-1" />
+  <link rel="stylesheet" href="telegram.css?v=20261006-1" />
 </head>
 <body>
   <div class="age-gate" id="ageGate">
@@ -109,6 +109,6 @@
   <div class="modal" id="telegramAuthModal"><div class="modal-card telegram-auth-card"><button class="modal-close" data-close="telegramAuthModal">×</button><div class="telegram-mark" aria-hidden="true">✦</div><h2>Войдите через Telegram</h2><p class="muted">Telegram автоматически подтвердит ваш профиль. Откройте Mini App из бота, и оформление заказа продолжится без пароля.</p><a class="primary telegram-login-link" href="https://t.me/parhuborderbot?startapp">Открыть в Telegram</a></div></div>
   <div class="modal" id="editProductModal"><div class="modal-card form-card"><button class="modal-close" data-close="editProductModal">×</button><h2 id="editProductTitle">Новый товар</h2><form id="productForm"><input type="hidden" name="id" /><label>Название<input name="name" required /></label><label>Категория<select name="category"><option>Одноразовые</option><option>Жидкости</option><option>Устройства</option><option>Расходники</option></select></label><label>Вкусы или цвета через запятую<input name="variants" required placeholder="Арбуз · лёд, Манго · маракуйя" /></label><label>Цена, ₽<input name="price" type="number" min="1" required /></label><label>Остаток каждого варианта<input name="stock" type="number" min="0" required /></label><button class="primary" type="submit">Сохранить</button></form></div></div>
   <div class="toast" id="toast"></div>
-  <script src="app.js"></script>
+  <script src="app.js?v=20261006-1"></script>
 </body>
 </html>
