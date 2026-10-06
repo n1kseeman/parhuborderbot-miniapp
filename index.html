@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#0a0710" />
-  <title>PAR HUB — Telegram Mini App</title>
+  <title>VAPE SHOP — Telegram Mini App</title>
   <script src="https://telegram.org/js/telegram-web-app.js?63"></script>
   <script src="telegram.js" defer></script>
   <link rel="stylesheet" href="styles.css" />
@@ -22,7 +22,7 @@
 
   <div class="app-shell">
     <header class="topbar">
-      <button class="brand" data-view="shop" aria-label="Главная"><span>PAR HUB</span></button>
+      <button class="brand" data-view="shop" aria-label="Главная"><span>VAPE SHOP</span></button>
       <div class="top-actions">
         <button class="icon-btn" id="searchToggle" aria-label="Поиск">⌕</button>
         <button class="icon-btn cart-icon" data-view="cart" aria-label="Корзина">⌁<span id="cartBadge">0</span></button>
@@ -60,7 +60,7 @@
 
       <section class="view" id="profileView">
         <div class="page-title"><h1>Профиль</h1></div>
-        <div class="profile-card"><div class="avatar" id="profileAvatar">N</div><div><b id="profileName">Гость PAR HUB</b><span id="profileStatus">Режим предпросмотра</span></div></div>
+        <div class="profile-card"><div class="avatar" id="profileAvatar">V</div><div><b id="profileName">Гость VAPE SHOP</b><span id="profileStatus">Режим предпросмотра</span></div></div>
         <button class="menu-row" data-view="orders"><span>◫</span><div><b>Мои заказы</b><small>История и статусы</small></div><i>›</i></button>
         <button class="menu-row" data-view="help"><span>?</span><div><b>Помощь</b><small>Связаться с магазином</small></div><i>›</i></button>
       </section>
@@ -74,7 +74,7 @@
         <div class="page-title subpage-title"><button class="page-back" data-view="profile" aria-label="Назад">‹</button><h1>Помощь</h1></div>
         <div class="support-card">
           <span class="support-icon">✦</span>
-          <div><h2>Поддержка PAR HUB</h2><p>Ответим на вопросы по ассортименту, заказу и получению.</p></div>
+          <div><h2>Поддержка VAPE SHOP</h2><p>Ответим на вопросы по ассортименту, заказу и получению.</p></div>
           <a class="primary support-link" href="https://t.me/parhuborderbot">Написать в Telegram</a>
         </div>
         <div class="faq-list">
@@ -106,7 +106,7 @@
 
   <div class="modal" id="productModal"><div class="modal-card" id="productModalBody"></div></div>
   <div class="modal" id="checkoutModal"><div class="modal-card form-card"><button class="modal-close" data-close="checkoutModal">×</button><p class="eyebrow">ОФОРМЛЕНИЕ</p><h2>Куда подготовить заказ?</h2><form id="checkoutForm"><label>Имя<input name="name" required placeholder="Ваше имя" /></label><label>Телефон<input name="phone" required placeholder="+7 (___) ___-__-__" /></label><label>Получение<select name="delivery"><option>Самовывоз</option><option>Доставка курьером</option></select></label><label>Комментарий<textarea name="comment" placeholder="Пожелания к заказу"></textarea></label><button class="primary" type="submit">Подтвердить заказ</button></form></div></div>
-  <div class="modal" id="telegramAuthModal"><div class="modal-card telegram-auth-card"><button class="modal-close" data-close="telegramAuthModal">×</button><div class="telegram-mark" aria-hidden="true">✦</div><h2>Войдите через Telegram</h2><p class="muted">Telegram автоматически подтвердит ваш профиль. Откройте Mini App из бота, и оформление заказа продолжится без пароля.</p><a class="primary telegram-login-link" href="https://t.me/parhuborderbot?startapp">Открыть @parhuborderbot</a></div></div>
+  <div class="modal" id="telegramAuthModal"><div class="modal-card telegram-auth-card"><button class="modal-close" data-close="telegramAuthModal">×</button><div class="telegram-mark" aria-hidden="true">✦</div><h2>Войдите через Telegram</h2><p class="muted">Telegram автоматически подтвердит ваш профиль. Откройте Mini App из бота, и оформление заказа продолжится без пароля.</p><a class="primary telegram-login-link" href="https://t.me/parhuborderbot?startapp">Открыть в Telegram</a></div></div>
   <div class="modal" id="editProductModal"><div class="modal-card form-card"><button class="modal-close" data-close="editProductModal">×</button><h2 id="editProductTitle">Новый товар</h2><form id="productForm"><input type="hidden" name="id" /><label>Название<input name="name" required /></label><label>Категория<select name="category"><option>Одноразовые</option><option>Жидкости</option><option>Устройства</option><option>Расходники</option></select></label><label>Вкусы или цвета через запятую<input name="variants" required placeholder="Арбуз · лёд, Манго · маракуйя" /></label><label>Цена, ₽<input name="price" type="number" min="1" required /></label><label>Остаток каждого варианта<input name="stock" type="number" min="0" required /></label><button class="primary" type="submit">Сохранить</button></form></div></div>
   <div class="toast" id="toast"></div>
   <script src="app.js"></script>
